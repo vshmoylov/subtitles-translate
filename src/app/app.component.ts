@@ -19,8 +19,7 @@ export class AppComponent {
   }
   saveLocal(){
     localStorage.setItem('subtitles', JSON.stringify(this.subtitles));
-    this.page = 0;
-    localStorage.setItem('page', '0');
+    localStorage.setItem('page', String(this.page));
   }
   saveFile(){
 
@@ -52,6 +51,7 @@ export class AppComponent {
     var subtitles = parser.fromSrt(data);
     console.log("File selected", file, subtitles);
     this.subtitles = subtitles;
+    this.page = 0;
     this.saveLocal();
   }
 
